@@ -2,13 +2,12 @@ import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 // хуки
 import { useLocalStorage, useChat } from 'hooks'
-// import { useRef } from 'react'
 // компоненты
 import { MessageForm } from './MessageForm'
 import { MessageList } from './MessageList'
 import { UserList } from './UserList'
 // стили
-import { Container, Row, Col, Card, Button } from 'react-bootstrap'
+import { Container, Row, Col, Card, Button} from 'react-bootstrap'
 // подключаем иконку
 import { TiMessages } from 'react-icons/ti'
 
@@ -16,8 +15,6 @@ export function ChatRoom() {
   const { roomId } = useParams()
   const [username] = useLocalStorage('username')
   const { users, messages, sendMessage, removeMessage, removeUser } = useChat(roomId)
-
-  // const userRef = useRef(null)
 
   const removeUserFromRoomHandler = (e) => {
     removeUser(username)
@@ -36,7 +33,9 @@ export function ChatRoom() {
             <Card.Text className='mb-0'>
               <TiMessages /> Chat App
             </Card.Text>
-            <h2 className='mb-0 text-center'>Room: {roomId}</h2>
+            <Card.Text className='mb-0 text-center'>
+              Room: {roomId}
+            </Card.Text>
             <Button 
               style={{
                 backgroundColor: '#E58080',

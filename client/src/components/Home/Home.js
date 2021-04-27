@@ -75,19 +75,19 @@ export function Home() {
             <option value='job'>Job</option>
           </Form.Control>
         </Form.Group>
-        <Button className='mt-4'
-            style={{ marginBottom: '1.5em',
-              fontSize: '1.25em',
-              fontWeight: '500'
-            }}
-            variant='success' 
-            as={Link} 
-            to={`/${roomId}`} 
-            ref={linkRef}
-            block
-        >
-            Join Chat
-        </Button>
+        <Link to={`/${roomId}`} ref={linkRef} style={{ textDecoration: 'none' }}>
+            <Button className='mt-4'
+              style={{ marginBottom: '1.5em',
+                fontSize: '1.25em',
+                fontWeight: '500'
+              }}
+              variant='success'
+              block
+              disabled={trimmed ? false : true}
+            >
+              Join Chat
+            </Button>
+        </Link>
       </Form>
     </Card>
   )

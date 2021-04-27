@@ -1,5 +1,5 @@
 // Стили
-import { Accordion, Card, Badge } from 'react-bootstrap'
+import { Card, Badge, ListGroup } from 'react-bootstrap'
 // Иконки
 import { RiRadioButtonLine } from 'react-icons/ri'
 import { FiUsers } from 'react-icons/fi';
@@ -7,8 +7,7 @@ import { FiUsers } from 'react-icons/fi';
 export const UserList = ({users}) => {
   
   return (
-    <Accordion>
-      <Card>
+      <Card style={{ height: '50%' }}>
         <Card.Header 
           style={{ 
             fontSize: '1.35em',
@@ -22,16 +21,21 @@ export const UserList = ({users}) => {
               {users.length}
             </Badge>
         </Card.Header>
-        {users.map((user) => (
-              <Card.Body key={user.username}>
-                <RiRadioButtonLine
-                  className={'mb-1 text-success'}
-                  size='0.8em'
-                />{' '}
-                {user.username}
-              </Card.Body>
-        ))}
+        <ListGroup style={{ overflow: 'auto' }}>
+          {users.map((user) => (
+                <ListGroup.Item key={user.username} 
+                  style={{ 
+                    border: 'none',
+                    padding: '5px 12px'
+                  }}>
+                  <RiRadioButtonLine
+                    className={'mb-1 text-success'}
+                    size='0.8em'
+                  />{' '}
+                  {user.username}
+                </ListGroup.Item>
+          ))}
+        </ListGroup>
       </Card>
-    </Accordion>
   )
 }
